@@ -1,4 +1,6 @@
 # Repo Overview
+This reposity is forked in order to solve an xrdp issue I was having native to my Viridian VMs.
+
 This repository is the home of a set of bash scripts that enable and configure an enhanced session mode on Linux VMs (Ubuntu, arch) for Hyper-V. You can learn more about this in our [blog post](https://techcommunity.microsoft.com/t5/virtualization/sneak-peek-taking-a-spin-with-enhanced-linux-vms/ba-p/382415).
 
 # How to use the repo
