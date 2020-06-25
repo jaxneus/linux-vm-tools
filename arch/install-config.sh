@@ -3,8 +3,9 @@
 #
 # This script is for Arch Linux to configure XRDP for enhanced session mode
 #
-# The configuration is adapted from the Ubuntu 16.04 script.
+# Modified by Jaxon "jaxne" Laing, adapted from Microsoft.
 #
+
 
 if [ "$(id -u)" -ne 0 ]; then
     echo 'This script must be run with root privileges' >&2
@@ -31,7 +32,7 @@ systemctl enable xrdp-sesman
 
 # Configure the installed XRDP ini files.
 # use vsock transport.
-sed -i_orig -e 's/port=3389/port=vsock:\/\/-1:3389/g' /etc/xrdp/xrdp.ini
+# sed -i_orig -e 's/port=3389/port=vsock:\/\/-1:3389/g' /etc/xrdp/xrdp.ini
 # use rdp security.
 sed -i_orig -e 's/security_layer=negotiate/security_layer=rdp/g' /etc/xrdp/xrdp.ini
 # remove encryption validation.
@@ -49,8 +50,7 @@ sed -i_orig -e 's/FuseMountName=thinclient_drives/FuseMountName=shared-drives/g'
 # Change the allowed_users
 echo "allowed_users=anybody" > /etc/X11/Xwrapper.config
 
-
-#Ensure hv_sock gets loaded
+# Ensure hv_sock gets loaded
 if [ ! -e /etc/modules-load.d/hv_sock.conf ]; then
 	echo "hv_sock" > /etc/modules-load.d/hv_sock.conf
 fi
@@ -84,5 +84,6 @@ EOF
 ###############################################################################
 # .xinitrc has to be modified manually.
 #
-echo "You will have to configure .xinitrc to start your windows manager, see https://wiki.archlinux.org/index.php/Xinit"
-echo "Reboot your machine to begin using XRDP."
+#echo "You will have to configure .xinitrc to start your windows manager, see https://wiki.archlinux.org/index.php/Xinit"
+#echo "Reboot your machine to begin using XRDP."
+echo "XRDP has been initalized, reboot your machine!"
